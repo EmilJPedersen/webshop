@@ -104,7 +104,13 @@ import {MatIconRegistry} from '@angular/material';
 export class CustommaterialModule { 
     constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
             iconRegistry.addSvgIcon(
-                'more_vert',
-            sanitizer.bypassSecurityTrustResourceUrl('assets/icons/more_vert.svg'));
+                'fb',
+            sanitizer.bypassSecurityTrustResourceUrl('assets/icons/fb.svg'));
+            iconRegistry.addSvgIcon(
+                'linkedin',
+            sanitizer.bypassSecurityTrustResourceUrl('assets/icons/linkedin.svg'));
+            iconRegistry.addSvgIcon(
+                'git',
+            sanitizer.bypassSecurityTrustResourceUrl('assets/icons/github.svg'));
       }
 }
