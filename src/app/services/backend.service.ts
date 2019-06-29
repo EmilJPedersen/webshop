@@ -30,7 +30,91 @@ export class BackendService {
       observer => {
         setTimeout(() => {
           observer.next(fakereponse)
-        }, 2000)
+        }, 1000)
+      }
+    )
+  }
+
+  getProducts(collType){
+    let fakereponse = [{
+      'category': "Test",
+      'scategory': "Test",
+      'name': "Product name",
+      'price': "100",
+      '_id': "420"
+    }];
+    return Observable.create(
+      observer => {
+        setTimeout(() => {
+          observer.next(fakereponse)
+        }, 1000)
+      }
+    )
+  }
+
+  getFilterProducts(collType, filtres){
+    let fakereponse = [{
+      'category': "Test",
+      'scategory': "Test",
+      'name': "Product name",
+      'price': "100",
+      '_id': "420"
+    }];
+    return Observable.create(
+      observer => {
+        setTimeout(() => {
+          observer.next(fakereponse)
+        }, 1000)
+      }
+    )
+  }
+
+  setProducts(collType, filtres){
+    let fakereponse = true;
+    return Observable.create(
+      observer => {
+        setTimeout(() => {
+          observer.next(fakereponse)
+        }, 1000)
+      }
+    )
+  }
+
+  updateProducts(collType, filtres){
+    let fakereponse = true;
+    return Observable.create(
+      observer => {
+        setTimeout(() => {
+          observer.next(fakereponse)
+        }, 1000)
+      }
+    )
+  }
+
+  getOneProductDoc(collType, docId) {
+    let fakereponse = {
+      'category': "Test",
+      'scategory': "Test",
+      'name': "Product name",
+      'price': "100",
+      '_id': "420"
+    };
+    return Observable.create(
+      observer => {
+        setTimeout(() => {
+          observer.next(fakereponse)
+        }, 1000)
+      }
+    )
+  }
+
+  delOneProductDoc(collType, docId) {
+    let fakereponse = true;
+    return Observable.create(
+      observer => {
+        setTimeout(() => {
+          observer.next(fakereponse)
+        }, 1000)
       }
     )
   }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AboutusComponent } from './shared/aboutus/aboutus.component';
 import { CustommaterialModule } from './custommaterial.module';
 import { SettingsComponent } from './settings/settings.component';
+import { SetproductComponent } from './admin/setproduct.component'
 
 @NgModule({
   declarations: [
@@ -16,13 +18,16 @@ import { SettingsComponent } from './settings/settings.component';
     HeaderComponent,
     FooterComponent,
     AboutusComponent,
-    SettingsComponent
+    SettingsComponent,
+    SetproductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CustommaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
