@@ -10,7 +10,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AboutusComponent } from './shared/aboutus/aboutus.component';
 import { CustommaterialModule } from './custommaterial.module';
 import { SettingsComponent } from './settings/settings.component';
-import { SetproductComponent } from './admin/setproduct.component'
+import { SetproductComponent } from './admin/setproduct/setproduct.component';
 
 @NgModule({
   declarations: [

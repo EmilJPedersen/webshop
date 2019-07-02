@@ -7,13 +7,14 @@
   <span class="example-icon"></span>
   {{pageTitle}}
   <span class="example-spacer"></span>
-  <mat-icon [color]="userStatusColor">account_box</mat-icon>
+  <mat-icon [color]="userStatusColor" routerLink="/product">shop</mat-icon>
+  <span class="example-icon"></span>
+  <mat-icon [color]="userStatusColor" routerLink="/settings">account_box</mat-icon>
   <span class="example-icon"></span>
   <mat-icon matBadge="{{counter}}" matBadgePosition="after" matBadgeColor="primary">shopping_cart</mat-icon>
   <span class="example-icon"></span>
   <mat-icon [matMenuTriggerFor]="helpMenu">help</mat-icon>
   <span class="example-icon"></span>
-  <mat-icon>settings</mat-icon>
 
   <mat-menu #helpMenu="matMenu">
     <div *ngIf="helpTitle=='settingspagehelp'">
@@ -30,7 +31,8 @@
     <a href="{{configData.github}}" target="_blank"><button mat-menu-item><mat-icon svgIcon="git"></mat-icon>GitHub</button></a>
     <a href="{{configData.linkedin}}" target="_blank"><button mat-menu-item><mat-icon svgIcon="linkedin"></mat-icon>LinkedIn</button></a>
     <button mat-menu-item routerLink="/aboutus"><mat-icon>info</mat-icon>About us</button>
-    <button mat-menu-item routerLink="/setproduct"><mat-icon>settings</mat-icon>Settings</button>
+    <!--<button mat-menu-item routerLink="/setproduct"><mat-icon>settings</mat-icon>Settings</button>-->
+    <button mat-menu-item routerLink="/admin"><mat-icon>settings</mat-icon>Settings</button>
   </mat-menu>
 
 </mat-toolbar>
