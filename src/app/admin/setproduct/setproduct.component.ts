@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { BackendService } from "./../services/backend.service";
+import { BackendService } from "./../../services/backend.service";
 
 @Component({
   selector: 'setproduct',
