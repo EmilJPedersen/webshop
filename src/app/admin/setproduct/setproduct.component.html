@@ -204,7 +204,7 @@
 <ng-template #showResMode>
     <!--resault page here-->
 
-    <!--<mat-card-actions align="start">
+    <mat-card-actions align="start">
         <span class="med-spacer"></span>
         <span class="med-spacer"></span>
         <span class="med-spacer"></span>
@@ -213,9 +213,9 @@
         </span>
         <span class="small-spacer"></span>
         <span matTooltip="Search All">
-            <mat-icon color="primary" (click)="toggle('searchMode')">search</mat-icon>
+            <mat-icon color="primary" (click)="toggle('searchMode')">search</mat-icon><!--possible error!-->
         </span>
-    </mat-card-actions>
+    </mat-card-actions><!--
     <div *ngIf="takeHostSelfie" width="300">
         <button type="reset" (click)="takeHostSelfie=false;" mat-icon-button color="primary">
             <mat-icon>clear</mat-icon>

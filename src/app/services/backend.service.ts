@@ -1,20 +1,49 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
 
-  constructor() { }
+  constructor(public afAuth: AngularFireAuth) { }
 
-  getConfig(){
+  getConfig() {
     return environment.social;
   }
 
-  getCartTotal(){
-    let fakereponse ="10";
+  login(loginType, formData?) {
+    //this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    if (formData) {
+      return this.afAuth.auth.signInWithEmailAndPassword(formData.email, formData.password);
+    } 
+    else {
+      let loginMethod;
+      if (loginType == 'GOOGLE') { loginMethod = new firebase.auth.GoogleAuthProvider(); }
+      return this.afAuth.auth.signInWithRedirect(loginMethod);
+    }
+  }
+
+  redirectLogin() {
+    return this.afAuth.auth.getRedirectResult();
+  }
+
+  logout() {
+    return this.afAuth.auth.signOut();
+  }
+
+  isUserLoggedin() {
+    return this.afAuth.authState;
+  }
+
+
+  //fake funktions for testing
+  getCartTotal() {
+    let fakereponse = "10";
     return Observable.create(
       observer => {
         setTimeout(() => {
@@ -24,7 +53,7 @@ export class BackendService {
     )
   }
 
-  getUserStatus(){
+  getUserStatus() {
     let fakereponse = true;
     return Observable.create(
       observer => {
@@ -35,7 +64,7 @@ export class BackendService {
     )
   }
 
-  getProducts(collType){
+  getProducts(collType) {
     let fakereponse = [{
       'category': "Test",
       'scategory': "Test",
@@ -52,7 +81,7 @@ export class BackendService {
     )
   }
 
-  getFilterProducts(collType, filtres){
+  getFilterProducts(collType, filtres) {
     let fakereponse = [{
       'category': "Test",
       'scategory': "Test",
@@ -69,7 +98,7 @@ export class BackendService {
     )
   }
 
-  setProducts(collType, filtres){
+  setProducts(collType, filtres) {
     let fakereponse = true;
     return Observable.create(
       observer => {
@@ -80,7 +109,7 @@ export class BackendService {
     )
   }
 
-  updateProducts(collType, filtres){
+  updateProducts(collType, filtres) {
     let fakereponse = true;
     return Observable.create(
       observer => {

@@ -1,6 +1,6 @@
 <header pageTitle="Shop" iconTitle="shop" helpTitle="Shoppagehelp"></header>
 <mat-card>
-    <mat-card-action align="start">
+    <mat-card-actions align="start">
         <form #searchForm="ngForm">
             <mat-form-field class="example-form">
                 <input matInput type="text" placeholder="Search" #search="ngModel" ngModel id="search" name="search"
@@ -14,7 +14,7 @@
                 <mat-icon color="primary" (click)="getFilterData(search.value)">search</mat-icon>
             </span>
         </form>
-    </mat-card-action>
+    </mat-card-actions>
 
     <mat-card-content *ngIf="toggle else showProductDetails">
         <mat-list>
@@ -36,7 +36,7 @@
         </span>
         <p class="label-go" mat-line> {{myDocData.sname }} {{myDocData.lname }}</p>
         <p class="label-hint" mat-line> {{myDocData.descr }}</p>
-        <p class="label-go" mat-line> Color: {{myDocData.color }} Size: {{myDocData.size }} Price: {{myDocData.price }}</p>
+        <p class="label-go" mat-line> Color: {{myDocData.color }} <br>Size: {{myDocData.size }}<br> Price: {{myDocData.price }}</p>
         <p class="label-error" mat-line> Shipping: {{myDocData.shipping }} Discount: {{myDocData.discount }}</p>
         <mat-error *ngIf="savedChanges">
             <br />
@@ -52,6 +52,6 @@
         <span class="med-spacer"></span>
         <button [disabled]="counter < 1" mat-raised-button color="primary" (click)="addToCart(myDocData, counter)">Add to Cart</button>
         <br />
-        <img [src]="profileUrl | async" width="300" height="300" />
+        <img [src]="profileUrl | async" width="300" height="300"/>
     </ng-template>
 </mat-card>

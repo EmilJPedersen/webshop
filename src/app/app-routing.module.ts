@@ -1,19 +1,22 @@
 import { AboutusComponent } from './shared/aboutus/aboutus.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AdmintabComponent } from './admin/admintab/admintab.component';
+import { ProductComponent } from './user/product/product.component';
 import { SetproductComponent } from './admin/setproduct/setproduct.component';
+import { LoginComponent } from './user/login/login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/aboutus', pathMatch:'full'},
+  {path: '', redirectTo: '/login', pathMatch:'full'},
   {path: 'aboutus', component: AboutusComponent},
-  //{path: 'setproduct', component: SetproductComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'admin', component: AdmintabComponent},
+  {path: 'product', component: ProductComponent},
   {path: 'settings', component: SettingsComponent
 },
-  {path: '**', redirectTo: '/aboutus', pathMatch:'full'},
+  {path: '**', redirectTo: '/login', pathMatch:'full'},
 ];
 
 @NgModule({

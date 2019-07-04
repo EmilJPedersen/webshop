@@ -74,9 +74,20 @@ export class ProductComponent implements OnInit {
     // capture user interest event, user has looked into product details
     this.dataLoading = true;
     let data = item;
-    return this._backendService.updateShoppingInterest('interests', data).then((success) => {
+    this._backendService.updateShoppingInterest('interests', data).subscribe((members) => {
       this.dataLoading = false;
-    });
+      this.counter = 0;
+      this.savedChanges = true;
+    },
+      (error) => {
+        this.error = true;
+        this.errorMessage = error.message;
+        this.dataLoading = false;
+      },
+      () => {
+        this.error = false;
+        this.dataLoading = false;
+      });
   }
 
   countProd(filter) {
@@ -93,11 +104,21 @@ export class ProductComponent implements OnInit {
     this.dataLoading = true;
     let data = item;
     data.qty = counter;
-    return this._backendService.updateShoppingCart('cart', data).then((success) => {
+    this.querySubscription = this._backendService.updateShoppingCart('cart', data).subscribe(members => {
       this.dataLoading = false;
       this.counter = 0;
       this.savedChanges = true;
-    });
+    },
+      (error) => {
+        this.error = true;
+        this.errorMessage = error.message;
+        this.dataLoading = false;
+      },
+      () => {
+        this.error = false;
+        this.dataLoading = false;
+      });
+
   }
 
 }
