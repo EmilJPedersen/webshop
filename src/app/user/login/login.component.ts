@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from './../../services/backend.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string = "";
   dataLoading: boolean = false;
 
-  constructor(private _backendService: BackendService) { }
+  constructor(private _backendService: BackendService, public afAuth: AngularFireAuth) { }
 
   ngOnInit() {
     //this.userloggedin = false;

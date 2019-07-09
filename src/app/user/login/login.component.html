@@ -1,6 +1,6 @@
 <header pageTitle="Login" iconTitle="account_circle" helpTitle="loginpagehelp"></header>
 <mat-card>
-    <div *ngIf="userloggedin; else showLogin">
+    <div *ngIf="afAuth.user | async as user; else showLogin">
         <button type="button" routerLink="/product" mat-raised-button color="primary">Continue Shopping</button>
         <span class="example-icon"></span>
         <button type="button" (click)="logout();" mat-raised-button color="primary">Logout</button>
