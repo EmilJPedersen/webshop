@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { Observable } from 'rxjs'; //Rx
+import { Observable } from 'rxjs/Rx';
 import { BackendService } from './backend.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardAdminService implements CanActivate {
+export class AuthGuardAdmin implements CanActivate {
 
   constructor(private _backendService: BackendService) { }
 
   canActivate(): Observable<boolean> {
-    return  this._backendService.isUserAdmin()
+    return this._backendService.isUserAdmin()
     .take(1)
     .map(res =>{
       if(res) {

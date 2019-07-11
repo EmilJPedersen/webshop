@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
-import { Observable } from "rxjs";
+import { Observable } from "rxjs/Rx";
 import { take, map} from 'rxjs/operators';
-
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +11,7 @@ import { take, map} from 'rxjs/operators';
 export class AuthGuard implements CanActivate {
 
   constructor(public afAuth: AngularFireAuth, private router: Router) { }
+
   canActivate(): Observable<boolean> {
   return Observable.from(this.afAuth.authState)
       .take(1)

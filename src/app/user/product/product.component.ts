@@ -15,7 +15,7 @@ export class ProductComponent implements OnInit {
   errorMessage: string = "";
   dataLoading: boolean = false;
   private querySubscription;
-  members: Observable<any>;
+  members: any[]//Observable<any>;
 
   //profileUrl: Observable<string | null>;
   profileUrl: string;

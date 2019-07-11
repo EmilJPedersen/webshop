@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private _backendService: BackendService, public afAuth: AngularFireAuth) { }
 
   ngOnInit() {
-    //this.userloggedin = false;
+    this.userloggedin = false;
     this.getAuthStatus();
   }
 

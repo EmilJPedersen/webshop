@@ -27,6 +27,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { AuthGuard } from './services/auth-guard.service';
+import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 
 @NgModule({
   declarations: [

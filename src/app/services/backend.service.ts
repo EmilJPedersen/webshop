@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs'; //Rx
+import { Observable } from 'rxjs/Rx'; //Rx
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase';
 import * as firebase from 'firebase/app';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-//import 'rxjs/add/observable/from';
-
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { filter } from 'minimatch';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
+  private itemCollection: AngularFirestoreCollection<any>;
   private itemDoc: AngularFirestoreDocument<any>;
   item: Observable<any>;
 
@@ -61,8 +61,72 @@ export class BackendService {
     return this.itemDoc.valueChanges();
   }
 
+  get timestamp() {
+    var d = new Date();
+    return d;
+  }
 
+  getCollectionUrl(filter) {
+    return "webshop/elish/" + filter;
+  }
 
+  setProducts(coll: string, data: any, docId?: any) {
+    const id = this.afs.createId();
+    const item = { id, name };
+    const timestamp = this.timestamp;
+    var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(item.id);
+    return docRef.set({
+      ...data,
+      _id: id,
+      updatedAt: timestamp,
+      createdAt: timestamp,
+      delete_flag: "N",
+      userid: this.afAuth.auth.currentUser.uid,
+      username: this.afAuth.auth.currentUser.displayName,
+      useremail: this.afAuth.auth.currentUser.email
+    });
+  }
+
+  getProducts(coll: string, filters?: any) {
+    this.itemCollection = this.afs.collection<any>(this.getCollectionUrl(coll));
+    return this.itemCollection.valueChanges();
+  }
+
+  getOneProduct(collType, docId) {
+    let docUrl = this.getCollectionUrl(collType) + "/" + docId;
+    this.itemDoc = this.afs.doc<any>(docUrl);
+    return this.itemDoc.valueChanges();
+  }
+
+  updateProducts(coll: string, data: any, docId?: any) {
+    const id = this.afs.createId();
+    const item = { id, name };
+    const timestamp = this.timestamp;
+    var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(data._id);
+    return docRef.update({
+      ...data,
+      _id: id,
+      updatedAt: timestamp,
+      userid: this.afAuth.auth.currentUser.uid,
+      username: this.afAuth.auth.currentUser.displayName,
+      useremail: this.afAuth.auth.currentUser.email
+    });
+  }
+
+  delOneProductDoc(coll, docId) {
+    const id = this.afs.createId();
+    const item = { id, name };
+    const timestamp = this.timestamp;
+    var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(docId);
+    return docRef.update({
+      delete_flag: "Y",
+      _id: id,
+      updatedAt: timestamp,
+      userid: this.afAuth.auth.currentUser.uid,
+      username: this.afAuth.auth.currentUser.displayName,
+      useremail: this.afAuth.auth.currentUser.email
+    });
+  }
 
   //fake funktions for testing
   getCartTotal() {
@@ -87,7 +151,7 @@ export class BackendService {
     )
   }
 
-  getProducts(collType) {
+  getProductsFake(collType) {
     let fakereponse = [{
       'category': "Test",
       'scategory': "Test",
@@ -121,7 +185,7 @@ export class BackendService {
     )
   }
 
-  setProducts(collType, filtres) {
+  setProductsFake(collType, filtres) {
     let fakereponse = true;
     return Observable.create(
       observer => {
@@ -132,7 +196,7 @@ export class BackendService {
     )
   }
 
-  updateProducts(collType, filtres) {
+  updateProductsFake(collType, filtres) {
     let fakereponse = true;
     return Observable.create(
       observer => {
@@ -143,7 +207,7 @@ export class BackendService {
     )
   }
 
-  getOneProductDoc(collType, docId) {
+  getOneProductDocFake(collType, docId) {
     let fakereponse = {
       'category': "Test",
       'scategory': "Test",
@@ -160,7 +224,7 @@ export class BackendService {
     )
   }
 
-  delOneProductDoc(collType, docId) {
+  delOneProductDocFake(collType, docId) {
     let fakereponse = true;
     return Observable.create(
       observer => {

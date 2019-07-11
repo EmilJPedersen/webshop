@@ -79,45 +79,34 @@ export class AdmincartsComponent implements OnInit, OnDestroy {
 
   setData(formData) {
     this.dataLoading = true;
-    this.querySubscription = this._backendService.setProducts('cart', formData).subscribe(members => {
-      if (members) {
+    this.querySubscription = this._backendService.setProducts('cart', formData)
+      .then((res) => {
         this.savedChanges = true;
         this.dataLoading = false;
-      }
-    },
-      (error) => {
+      }).catch(error => {
         this.error = true;
         this.errorMessage = error.message;
-        this.dataLoading = false;
-      },
-      () => {
-        this.error = false;
         this.dataLoading = false;
       });
   }
 
   updateData(formData) {
     this.dataLoading = true;
-    this.querySubscription = this._backendService.updateProducts('cart', formData).subscribe(members => {
-      if (members) {
+    this.querySubscription = this._backendService.updateProducts('cart', formData)
+      .then((res) => {
         this.savedChanges = true;
         this.dataLoading = false;
-      }
-    },
-      (error) => {
+      }).catch(error => {
         this.error = true;
         this.errorMessage = error.message;
         this.dataLoading = false;
-      },
-      () => {
-        this.error = false;
-        this.dataLoading = false;
       });
+
   }
 
   getDoc(docId) {
     this.dataLoading = true;
-    this.querySubscription = this._backendService.getOneProductDoc('cart', docId).subscribe(res => {
+    this.querySubscription = this._backendService.getOneProduct('cart', docId).subscribe(res => {
       if (res) {
         this.myDocData = res;
         this.toggle('editMode');
@@ -138,19 +127,13 @@ export class AdmincartsComponent implements OnInit, OnDestroy {
   deleteDoc(docId) {
     if (confirm("Are you sure you want to delete this?")) {
       this.dataLoading = true;
-      this.querySubscription = this._backendService.delOneProductDoc('cart', docId).subscribe(res => {
-        if (res) {
-          this.toggle('searchMode');
+      this.querySubscription = this._backendService.delOneProductDoc('product', docId)
+        .then((res) => {
+          this.savedChanges = true;
           this.dataLoading = false;
-        }
-      },
-        (error) => {
+        }).catch(error => {
           this.error = true;
           this.errorMessage = error.message;
-          this.dataLoading = false;
-        },
-        () => {
-          this.error = false;
           this.dataLoading = false;
         });
     }

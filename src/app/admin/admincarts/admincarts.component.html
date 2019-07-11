@@ -73,30 +73,24 @@
             <mat-form-field>
                 <input matInput placeholder="Category" name="category" id="category" [ngModel]="myDocData.category"
                     required minlength="1">
-                <mat-hint align="end">eg. Men Garments</mat-hint>
+                <mat-hint align="end">eg. Photos</mat-hint>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Sub Category" name="scategory" id="scategory"
                     [ngModel]="myDocData.scategory" required minlength="1">
-                <mat-hint align="end">eg. Shirt</mat-hint>
+                <mat-hint align="end">eg. Adobe</mat-hint>
             </mat-form-field>
             <br>
             <mat-form-field>
                 <textarea matInput placeholder="*IMP*: Search use Tags Text" name="tags" id="tags"
                     [ngModel]="myDocData.tags" required minlength="1"></textarea>
-                <mat-hint align="end">eg. Men,Reading,Glasses</mat-hint>
+                <mat-hint align="end">eg. Text eidtor, Online</mat-hint>
             </mat-form-field>
             <br>
             <mat-form-field>
                 <input matInput placeholder="Product Name" name="name" id="name" [ngModel]="myDocData.name" required
                     minlength="1">
-                <mat-hint align="end">eg. Shirt</mat-hint>
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Short Name" name="sname" id="sname" [ngModel]="myDocData.sname">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Long Name" name="lname" id="lname" [ngModel]="myDocData.lname">
+                <mat-hint align="end">eg. Photoshop</mat-hint>
             </mat-form-field>
             <br>
             <mat-form-field>
@@ -105,21 +99,11 @@
             </mat-form-field>
             <br>
             <mat-form-field>
-                <input matInput placeholder="Color" name="color" id="color" [ngModel]="myDocData.color">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Size" name="size" id="size" [ngModel]="myDocData.size">
-            </mat-form-field>
-            <mat-form-field>
                 <input matInput placeholder="Qty" name="qty" id="qty" [ngModel]="myDocData.qty" required
                     pattern="[0-9]+">
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Price" name="price" id="price" [ngModel]="myDocData.price" required
-                    pattern="[0-9]+">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Shipping" name="shipping" id="shipping" [ngModel]="myDocData.shipping"
                     pattern="[0-9]+">
             </mat-form-field>
             <mat-form-field>
