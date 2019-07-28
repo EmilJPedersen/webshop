@@ -6,20 +6,19 @@
         <button type="button" (click)="logout();" mat-raised-button color="primary">Logout</button>
     </div>
     <ng-template #showLogin>
-        <mat-card-content>
+        <!--<mat-card-content>
             <mat-divider></mat-divider>
             <form #formData="ngForm" (ngSubmit)="login('email',formData.value)" class="example-form">
                 <mat-card-actions *ngIf="error">
                     <mat-error>Login credentials are not verified. Here is the error: {{ errorMessage }}</mat-error>
                 </mat-card-actions>
                 <mat-error *ngIf="dataLoading">
-                    <mat-progress-bar mode="indeterminate" [attr.color]="primary" [value]="15">
-                    </mat-progress-bar>
+                    <mat-progress-bar mode="indeterminate" color="primary" [value]="15"></mat-progress-bar>
                 </mat-error>
                 <mat-error *ngIf="brokenNetwork" class="label-error">Network Connection Error.</mat-error>
                 <mat-card-actions align="start">
                     <button type="submit" [disabled]="!formData.valid" mat-raised-button color="primary">Log in</button>
-                    <!--<button type="button" routerLink="/shopping" mat-raised-button color="primary">Browse as Guest</button>-->
+                    <!--<button type="button" routerLink="/shopping" mat-raised-button color="primary">Browse as Guest</button>--><!--
                 </mat-card-actions>
                 <mat-form-field class="example-full-width">
                     <input matInput placeholder="email" name="email" #email="ngModel" ngModel required email>
@@ -39,7 +38,7 @@
                     </mat-error>
                 </span>
             </form>
-        </mat-card-content>
+        </mat-card-content>-->
         <mat-card-content> <!-- *ngIf="socialAuth"-->
             <mat-chip-list class="mat-chip-list-stacked" style="margin-left: 170px;">
                 <!--<mat-chip color="primary" selected="true" (click)="login('FB')">

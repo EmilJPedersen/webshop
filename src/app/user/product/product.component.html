@@ -36,8 +36,8 @@
         </span>
         <p class="label-go" mat-line> {{myDocData.sname }} {{myDocData.lname }}</p>
         <p class="label-hint" mat-line> {{myDocData.descr }}</p>
-        <p class="label-go" mat-line> Color: {{myDocData.color }} <br>Size: {{myDocData.size }}<br> Price: {{myDocData.price }}</p>
-        <p class="label-error" mat-line> Shipping: {{myDocData.shipping }} Discount: {{myDocData.discount }}</p>
+        <p class="label-go" mat-line> Price: {{myDocData.price }}</p>
+        <p class="label-error" mat-line> Discount: {{myDocData.discount }}</p>
         <mat-error *ngIf="savedChanges">
             <br />
             <br /> Shopping cart is updated.

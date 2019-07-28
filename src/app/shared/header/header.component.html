@@ -13,8 +13,8 @@
   <span class="example-icon"></span>
   <mat-icon matBadge="{{counter}}" matBadgePosition="after" matBadgeColor="primary">shopping_cart</mat-icon>
   <span class="example-icon"></span>
-  <mat-icon [matMenuTriggerFor]="helpMenu">help</mat-icon>
-  <span class="example-icon"></span>
+  <!--<mat-icon [matMenuTriggerFor]="helpMenu">help</mat-icon>
+  <span class="example-icon"></span>-->
 
   <mat-menu #helpMenu="matMenu">
     <div *ngIf="helpTitle=='settingspagehelp'">
@@ -27,13 +27,10 @@
   </mat-menu>
 
   <mat-menu #navMenu="matMenu">
-    <!--<a href="{{configData.fblink}}" target="_blank"><button mat-menu-item><mat-icon svgIcon="fb"></mat-icon>Facebook</button></a>
-    <a href="{{configData.github}}" target="_blank"><button mat-menu-item><mat-icon svgIcon="git"></mat-icon>GitHub</button></a>
-    <a href="{{configData.linkedin}}" target="_blank"><button mat-menu-item><mat-icon svgIcon="linkedin"></mat-icon>LinkedIn</button></a>
-    <button mat-menu-item routerLink="/setproduct"><mat-icon>settings</mat-icon>Settings</button>-->
     <button mat-menu-item routerLink="/product"><mat-icon>shop</mat-icon>Shop</button>
     <button mat-menu-item routerLink="/aboutus"><mat-icon>info</mat-icon>About us</button>
-    <button mat-menu-item routerLink="/admin"><mat-icon>settings</mat-icon>admin</button>
+    <button mat-menu-item routerLink="/settings"><mat-icon>settings</mat-icon>Settings</button>
+    <button mat-menu-item routerLink="/admin"><mat-icon>settings_applications</mat-icon>Admin</button>
   </mat-menu>
 
 </mat-toolbar>

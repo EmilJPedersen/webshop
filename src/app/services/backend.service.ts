@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs/Rx'; //Rx
+import { Observable } from 'rxjs/Rx';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase';
 import * as firebase from 'firebase/app';
@@ -22,15 +22,19 @@ export class BackendService {
   }
 
   login(loginType, formData?) {
+    let loginMethod;
+    
+    loginMethod = new firebase.auth.GoogleAuthProvider();
+    return this.afAuth.auth.signInWithRedirect(loginMethod);
     //this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
-    if (formData) {
+    /*if (formData) {
       return this.afAuth.auth.signInWithEmailAndPassword(formData.email, formData.password);
     }
     else {
       let loginMethod;
       if (loginType == 'GOOGLE') { loginMethod = new firebase.auth.GoogleAuthProvider(); }
       return this.afAuth.auth.signInWithRedirect(loginMethod);
-    }
+    }*/
   }
 
   redirectLogin() {
@@ -52,7 +56,7 @@ export class BackendService {
 
   isUserAdmin() {
     let collUrl = !this.isUserLoggedin() ? "abcd" : this.afAuth.auth.currentUser.uid;
-    collUrl = "webshop/elish/admins/" + collUrl;
+    collUrl = "/webshop/elish/admins/" + collUrl;
     return this.getDoc(collUrl);
   }
 

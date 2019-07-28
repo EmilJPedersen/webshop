@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
   }
 
   logout() {
-
+    
   }
 
   getUser() {
