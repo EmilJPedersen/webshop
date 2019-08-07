@@ -91,7 +91,7 @@ export class BackendService {
     });
   }
 
-  getProducts(coll: string, filters?: any) {
+  getProducts1(coll: string, filters?: any) {
     this.itemCollection = this.afs.collection<any>(this.getCollectionUrl(coll));
     return this.itemCollection.valueChanges();
   }
@@ -155,13 +155,14 @@ export class BackendService {
     )
   }
 
-  getProductsFake(collType) {
+  getProducts(collType) {
     let fakereponse = [{
-      'category': "Test",
-      'scategory': "Test",
-      'name': "Product name",
-      'price': "100",
-      '_id': "420"
+      'category': "Photo Editing",
+      'scategory': "Adobe",
+      'name': "Photoshop CS6",
+      'price': "1500",
+      '_id': "420",
+      'description': "test"
     }];
     return Observable.create(
       observer => {
@@ -174,10 +175,10 @@ export class BackendService {
 
   getFilterProducts(collType, filtres) {
     let fakereponse = [{
-      'category': "Test",
-      'scategory': "Test",
-      'name': "Product name",
-      'price': "100",
+      'category': "Photo Editing",
+      'scategory': "Adobe",
+      'name': "Photoshop CS6",
+      'price': "1500",
       '_id': "420"
     }];
     return Observable.create(
