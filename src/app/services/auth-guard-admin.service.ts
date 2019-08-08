@@ -8,21 +8,24 @@ import { BackendService } from './backend.service';
 })
 export class AuthGuardAdmin implements CanActivate {
 
-  constructor(private _backendService: BackendService, private router: Router) { }
+  constructor(private _backendService: BackendService) { }
   
-  canActivate(): Observable<boolean> {
-    return this._backendService.isUserAdmin()
-    .take(1)
-    .map(res =>{
-      if(res) {
-        return res.isadmin;
-      } else {
-        return false;
-      }
-    })
-    .do(isadmin => {
-      console.log(isadmin);
-      return true;
-    });
+  canActivate(){ //Observable<boolean> {
+  return true;
+    //   return this._backendService.isUserAdmin()
+  //   .take(1)
+  //   .map(res =>{
+  //     console.log("test "+res.isadmin);
+  //     //return res.isadmin;
+  //     if(res) {
+  //       return res.isadmin;
+  //     } else {
+  //       return false;
+  //     }
+  //   })
+  //   .do(isadmin => {
+  //     console.log(isadmin);
+  //     return true;
+  //   });
   }
 }

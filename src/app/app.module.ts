@@ -30,6 +30,11 @@ import { environment } from '../environments/environment';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 
+//file storage
+import { FileUploadComponent } from './shared/dropzone/fileupload.component';
+import { DropZoneDirective } from './shared/dropzone/dropzone.directive';
+import { FileSizePipe } from './shared/dropzone/filesize.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +51,10 @@ import { AuthGuardAdmin } from './services/auth-guard-admin.service';
     UserComponent,
     LoginComponent,
     OrdersComponent,
-    ProductComponent
+    ProductComponent,
+    FileUploadComponent,
+    DropZoneDirective,
+    FileSizePipe
   ],
   imports: [
     BrowserModule,

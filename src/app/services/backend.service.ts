@@ -57,11 +57,13 @@ export class BackendService {
   isUserAdmin() {
     let collUrl = !this.isUserLoggedin() ? "abcd" : this.afAuth.auth.currentUser.uid;
     collUrl = "/webshop/elish/admins/" + collUrl;
+    //console.log(collUrl);
     return this.getDoc(collUrl);
   }
 
   getDoc(collUrl: string) {
     this.itemDoc = this.afs.doc<any>(collUrl);
+    console.log(this.itemDoc);
     return this.itemDoc.valueChanges();
   }
 
@@ -91,7 +93,7 @@ export class BackendService {
     });
   }
 
-  getProducts1(coll: string, filters?: any) {
+  getProducts(coll: string, filters?: any) {
     this.itemCollection = this.afs.collection<any>(this.getCollectionUrl(coll));
     return this.itemCollection.valueChanges();
   }
@@ -132,133 +134,147 @@ export class BackendService {
     });
   }
 
+  setProductPic(filePath, coll, docId?) {
+    var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(docId);
+    return docRef.set({
+      path:filePath
+    },{merge: true});
+  }
+
+  deleteProductPic(coll, docId?) {
+    var docRef = this.afs.collection(this.getCollectionUrl(coll)).doc(docId);
+    return docRef.set({
+      path: null
+    },{merge: true});
+  }
+
   //fake funktions for testing
-  getCartTotal() {
-    let fakereponse = "10";
-    return Observable.create(
-      observer => {
-        setTimeout(() => {
-          observer.next(fakereponse)
-        }, 2000)
-      }
-    )
-  }
+  // getCartTotal() {
+  //   let fakereponse = "10";
+  //   return Observable.create(
+  //     observer => {
+  //       setTimeout(() => {
+  //         observer.next(fakereponse)
+  //       }, 2000)
+  //     }
+  //   )
+  // }
 
-  getUserStatus() {
-    let fakereponse = true;
-    return Observable.create(
-      observer => {
-        setTimeout(() => {
-          observer.next(fakereponse)
-        }, 1000)
-      }
-    )
-  }
+  // getUserStatus() {
+  //   let fakereponse = true;
+  //   return Observable.create(
+  //     observer => {
+  //       setTimeout(() => {
+  //         observer.next(fakereponse)
+  //       }, 1000)
+  //     }
+  //   )
+  // }
 
-  getProducts(collType) {
-    let fakereponse = [{
-      'category': "Photo Editing",
-      'scategory': "Adobe",
-      'name': "Photoshop CS6",
-      'price': "1500",
-      '_id': "420",
-      'description': "test"
-    }];
-    return Observable.create(
-      observer => {
-        setTimeout(() => {
-          observer.next(fakereponse)
-        }, 1000)
-      }
-    )
-  }
+  // getProductsFake(collType) {
+  //   let fakereponse = [{
+  //     'category': "Photo Editing",
+  //     'scategory': "Adobe",
+  //     'name': "Photoshop CS6",
+  //     'price': "1500",
+  //     '_id': "420",
+  //     'description': "test"
+  //   }];
+  //   return Observable.create(
+  //     observer => {
+  //       setTimeout(() => {
+  //         observer.next(fakereponse)
+  //       }, 1000)
+  //     }
+  //   )
+  // }
 
-  getFilterProducts(collType, filtres) {
-    let fakereponse = [{
-      'category': "Photo Editing",
-      'scategory': "Adobe",
-      'name': "Photoshop CS6",
-      'price': "1500",
-      '_id': "420"
-    }];
-    return Observable.create(
-      observer => {
-        setTimeout(() => {
-          observer.next(fakereponse)
-        }, 1000)
-      }
-    )
-  }
+  // getFilterProducts(collType, filtres) {
+  //   let fakereponse = [{
+  //     'category': "Photo Editing",
+  //     'scategory': "Adobe",
+  //     'name': "Photoshop CS6",
+  //     'price': "1500",
+  //     '_id': "420"
+  //   }];
+  //   return Observable.create(
+  //     observer => {
+  //       setTimeout(() => {
+  //         observer.next(fakereponse)
+  //       }, 1000)
+  //     }
+  //   )
+  // }
 
-  setProductsFake(collType, filtres) {
-    let fakereponse = true;
-    return Observable.create(
-      observer => {
-        setTimeout(() => {
-          observer.next(fakereponse)
-        }, 1000)
-      }
-    )
-  }
+  // setProductsFake(collType, filtres) {
+  //   let fakereponse = true;
+  //   return Observable.create(
+  //     observer => {
+  //       setTimeout(() => {
+  //         observer.next(fakereponse)
+  //       }, 1000)
+  //     }
+  //   )
+  // }
 
-  updateProductsFake(collType, filtres) {
-    let fakereponse = true;
-    return Observable.create(
-      observer => {
-        setTimeout(() => {
-          observer.next(fakereponse)
-        }, 1000)
-      }
-    )
-  }
+  // updateProductsFake(collType, filtres) {
+  //   let fakereponse = true;
+  //   return Observable.create(
+  //     observer => {
+  //       setTimeout(() => {
+  //         observer.next(fakereponse)
+  //       }, 1000)
+  //     }
+  //   )
+  // }
 
-  getOneProductDocFake(collType, docId) {
-    let fakereponse = {
-      'category': "Test",
-      'scategory': "Test",
-      'name': "Product name",
-      'price': "100",
-      '_id': "420"
-    };
-    return Observable.create(
-      observer => {
-        setTimeout(() => {
-          observer.next(fakereponse)
-        }, 1000)
-      }
-    )
-  }
+  // getOneProductDocFake(collType, docId) {
+  //   let fakereponse = {
+  //     'category': "Test",
+  //     'scategory': "Test",
+  //     'name': "Product name",
+  //     'price': "100",
+  //     '_id': "420"
+  //   };
+  //   return Observable.create(
+  //     observer => {
+  //       setTimeout(() => {
+  //         observer.next(fakereponse)
+  //       }, 1000)
+  //     }
+  //   )
+  // }
 
-  delOneProductDocFake(collType, docId) {
-    let fakereponse = true;
-    return Observable.create(
-      observer => {
-        setTimeout(() => {
-          observer.next(fakereponse)
-        }, 1000)
-      }
-    )
-  }
+  // delOneProductDocFake(collType, docId) {
+  //   let fakereponse = true;
+  //   return Observable.create(
+  //     observer => {
+  //       setTimeout(() => {
+  //         observer.next(fakereponse)
+  //       }, 1000)
+  //     }
+  //   )
+  // }
 
-  updateShoppingInterest(collType, data) {
-    let fakereponse = true;
-    return Observable.create(
-      observer => {
-        setTimeout(() => {
-          observer.next(fakereponse)
-        }, 1000)
-      }
-    )
-  }
+  // updateShoppingInterest(collType, data) {
+  //   let fakereponse = true;
+  //   return Observable.create(
+  //     observer => {
+  //       setTimeout(() => {
+  //         observer.next(fakereponse)
+  //       }, 1000)
+  //     }
+  //   )
+  // }
 
-  updateShoppingCart(collType, data) {
-    let fakereponse = true;
-    return Observable.create(
-      observer => {
-        setTimeout(() => {
-          observer.next(fakereponse)
-        }, 1000)
-      }
-    )
-  }
+  // updateShoppingCart(collType, data) {
+  //   let fakereponse = true;
+  //   return Observable.create(
+  //     observer => {
+  //       setTimeout(() => {
+  //         observer.next(fakereponse)
+  //       }, 1000)
+  //     }
+  //   )
+  // }
 }
